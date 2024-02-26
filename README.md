@@ -1,5 +1,9 @@
 # devops-installation
 
+## Pipeline workflow
+![pipeline-workflow](PipelineWorkflow.drawio.png)
+
+
 ## Installation script - full_install.sh (Set-up not completed for -> storage class, persistent volumes, persistent volume claims, network, RBAC etc.)
 
 ```bash
