@@ -4,7 +4,7 @@
 
 ![cluster-sink](ClusterSink.drawio.png)
 
-## Load Balancing definition for Cluster Mesh IP range
+## Cluster Mesh IP range
 
 ```yaml
 - name: sink-cluster
