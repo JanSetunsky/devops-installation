@@ -17,23 +17,21 @@
           pv: s-jenkins-master-pv-1-uid
           pvc: s-jenkins-master-pvc-1-uid
         - name: s-kube-proxy-1
-          type: pod
           namespace: kube-system
           subnet: 10.10.4.0/23
+          sc: s-jenkins-master-sc-1-uid
+          pv: s-jenkins-master-pv-1-uid
+          pvc: s-jenkins-master-pvc-1-uid
         - namespace: s-prod-pod-worker
-          type: pod
           subnet: 10.10.6.0/23
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.1.50/16
-               subnet_to: 10.10.1.51/16
+          sc: s-jenkins-master-sc-1-uid
+          pv: s-jenkins-master-pv-1-uid
+          pvc: s-jenkins-master-pvc-1-uid
         - namespace: s-prodc-pod-worker
-          type: pod
           subnet: 10.10.8.0/23
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.1.80/16
-               subnet_to: 10.10.1.81/16
+          sc: s-jenkins-master-sc-1-uid
+          pv: s-jenkins-master-pv-1-uid
+          pvc: s-jenkins-master-pvc-1-uid
     - name: sink-node-master-2
       subnet: 10.10.2.0/16
       pods:
