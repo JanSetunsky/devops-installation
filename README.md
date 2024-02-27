@@ -149,7 +149,7 @@
       pods:
         - name: prod-jenkins-master
           namespace: prod-jenkins-master
-          subnet: 10.8.6.0/23
+          subnet: 10.12.6.0/23
           sc: prod-jenkins-master-sc
           pv: prod-jenkins-master-pv
           pvc: prod-jenkins-master-pvc
@@ -158,7 +158,7 @@
       pods:
         - name: prod-jenkins-worker
           namespace: prod-jenkins-worker
-          subnet: 10.8.38.0/23
+          subnet: 10.12.38.0/23
           sc: prod-jenkins-worker-sc
           pv: prod-jenkins-worker-pv
           pvc: prod-jenkins-worker-pvc
