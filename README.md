@@ -41,13 +41,13 @@
       pods:
         - name: s-jenkins-master
           namespace: s-jenkins-master
-          subnet: 10.10.6.0/23
+          subnet: 10.10.38.0/23
           sc: s-jenkins-master-sc
           pv: s-jenkins-master-pv
           pvc: s-jenkins-master-pvc
         - name: s-stg-pod-worker
           namespace: s-stg-pod-worker
-          subnet: 10.10.8.0/21
+          subnet: 10.10.40.0/21
           sc: s-stg-load-balancer-sc
           pv: s-stg-load-balancer-pv
           pvc: s-stg-load-balancer-pvc
@@ -57,7 +57,7 @@
             - name: s-stg-load-balancer-3
         - name: s-ext-pod-worker
           namespace: s-ext-pod-worker
-          subnet: 10.10.16.0/21
+          subnet: 10.10.48.0/21
           sc: s-ext-load-balancer-sc
           pv: s-ext-load-balancer-pv
           pvc: s-ext-load-balancer-pvc
@@ -66,17 +66,17 @@
             - name: s-ext-load-balancer-2
             - name: s-ext-load-balancer-3
     - name: sink-node-master-3
-      subnet: 10.10.3.0/16
+      subnet: 10.10.64.0/19
       pods:
         - name: s-jenkins-master
           namespace: s-jenkins-master
-          subnet: 10.10.6.0/23
+          subnet: 10.10.70.0/23
           sc: s-jenkins-master-sc
           pv: s-jenkins-master-pv
           pvc: s-jenkins-master-pvc
         - name: s-dev-pod-worker
           namespace: s-dev-pod-worker
-          subnet: 10.10.8.0/21
+          subnet: 10.10.72.0/21
           sc: s-dev-load-balancer-sc
           pv: s-dev-load-balancer-pv
           pvc: s-dev-load-balancer-pvc
@@ -86,7 +86,7 @@
             - name: s-dev-load-balancer-3
         - name: s-devc-pod-worker
           namespace: s-devc-pod-worker
-          subnet: 10.10.16.0/21
+          subnet: 10.10.80.0/21
           sc: s-devc-load-balancer-sc
           pv: s-devc-load-balancer-pv
           pvc: s-devc-load-balancer-pvc
