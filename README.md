@@ -7,9 +7,20 @@
   subnet: 10.10.0.0/16
   nodes:
     - name: sink-node-master-1
+      type: node
       subnet: 10.10.1.0/16
       pods:
+        - name: s-jenkins-master
+          type: pod
+          namespace: s-jenkins-master-1
+          subnet_from: 10.10.1.12/16
+          subnet_to: 10.10.1.19/16
+          persistent_volume:
+            -  name: s-jenkins-master-1-pv
+               subnet_from: 10.10.1.10/16
+               subnet_to: 10.10.1.11/16
         - name: s-node-pod-master-1
+          type: pod
           namespace: s-node-pod-master
           subnet_from: 10.10.1.21/16
           subnet_to: 10.10.1.49/16
@@ -17,12 +28,14 @@
             -  name: s-node-pod-master-1-pv
                ip: 10.10.1.20/16
         - namespace: s-prod-pod-workers-1
+          type: pod
           subnet_from: 10.10.1.51/16
           subnet_to: 10.10.1.79/16
           persistent_volume:
             -  name: s-prod-pod-workers-1-pv
                ip: 10.10.1.50/16
         - namespace: s-prodc-pod-workers-1
+          type: pod
           subnet_from: 10.10.1.81/16
           subnet_to: 10.10.1.109/16
           persistent_volume:
