@@ -4,21 +4,21 @@
 
 ```yaml
 - name: sink-cluster
-  subnet: 10.10.0.0/16
+  subnet: 10.0.0.0/14
   nodes:
     - name: sink-node-master-1
       type: node
-      subnet: 10.10.0.0/19
+      subnet: 10.0.0.0/19
       pods:
         - name: s-jenkins-master
           namespace: s-jenkins-master
-          subnet: 10.10.6.0/23
+          subnet: 10.0.6.0/23
           sc: s-jenkins-master-sc
           pv: s-jenkins-master-pv
           pvc: s-jenkins-master-pvc
         - name: s-prod-pod-worker
           namespace: s-prod-pod-worker
-          subnet: 10.10.8.0/21
+          subnet: 10.0.8.0/21
           sc: s-prod-load-balancer-sc
           pv: s-prod-load-balancer-pv
           pvc: s-prod-load-balancer-pvc
@@ -28,7 +28,7 @@
             - name: s-prod-load-balancer-3
         - name: s-prodc-pod-worker
           namespace: s-prodc-pod-worker
-          subnet: 10.10.16.0/21
+          subnet: 10.0.16.0/21
           sc: s-prodc-load-balancer-sc
           pv: s-prodc-load-balancer-pv
           pvc: s-prodc-load-balancer-pvc
@@ -37,17 +37,17 @@
             - name: s-prodc-load-balancer-2
             - name: s-prodc-load-balancer-3
     - name: sink-node-master-2
-      subnet: 10.10.32.0/19
+      subnet: 10.0.32.0/19
       pods:
         - name: s-jenkins-master
           namespace: s-jenkins-master
-          subnet: 10.10.38.0/23
+          subnet: 10.0.38.0/23
           sc: s-jenkins-master-sc
           pv: s-jenkins-master-pv
           pvc: s-jenkins-master-pvc
         - name: s-stg-pod-worker
           namespace: s-stg-pod-worker
-          subnet: 10.10.40.0/21
+          subnet: 10.0.40.0/21
           sc: s-stg-load-balancer-sc
           pv: s-stg-load-balancer-pv
           pvc: s-stg-load-balancer-pvc
@@ -57,7 +57,7 @@
             - name: s-stg-load-balancer-3
         - name: s-ext-pod-worker
           namespace: s-ext-pod-worker
-          subnet: 10.10.48.0/21
+          subnet: 10.0.48.0/21
           sc: s-ext-load-balancer-sc
           pv: s-ext-load-balancer-pv
           pvc: s-ext-load-balancer-pvc
@@ -66,17 +66,17 @@
             - name: s-ext-load-balancer-2
             - name: s-ext-load-balancer-3
     - name: sink-node-master-3
-      subnet: 10.10.64.0/19
+      subnet: 10.0.64.0/19
       pods:
         - name: s-jenkins-master
           namespace: s-jenkins-master
-          subnet: 10.10.70.0/23
+          subnet: 10.0.70.0/23
           sc: s-jenkins-master-sc
           pv: s-jenkins-master-pv
           pvc: s-jenkins-master-pvc
         - name: s-dev-pod-worker
           namespace: s-dev-pod-worker
-          subnet: 10.10.72.0/21
+          subnet: 10.0.72.0/21
           sc: s-dev-load-balancer-sc
           pv: s-dev-load-balancer-pv
           pvc: s-dev-load-balancer-pvc
@@ -86,7 +86,7 @@
             - name: s-dev-load-balancer-3
         - name: s-devc-pod-worker
           namespace: s-devc-pod-worker
-          subnet: 10.10.80.0/21
+          subnet: 10.0.80.0/21
           sc: s-devc-load-balancer-sc
           pv: s-devc-load-balancer-pv
           pvc: s-devc-load-balancer-pvc
@@ -94,18 +94,120 @@
             - name: s-devc-load-balancer-1
             - name: s-devc-load-balancer-2
             - name: s-devc-load-balancer-3
-cluster_dev:
-  subnet: 10.11.0.0/16
+- name: dev-cluster:
+  subnet: 10.4.0.0/14
+  nodes:
+    - name: dev-node-master
+      type: node
+      subnet: 10.4.0.0/19
+      pods:
+        - name: dev-jenkins-master
+          namespace: s-jenkins-master
+          subnet: 10.4.6.0/23
+          sc: dev-jenkins-master-sc
+          pv: dev-jenkins-master-pv
+          pvc: dev-jenkins-master-pvc
+    - name: dev-node-worker
+      subnet: 10.4.32.0/19
+      pods:
+        - name: dev-jenkins-worker
+          namespace: dev-jenkins-worker
+          subnet: 10.0.38.0/23
+          sc: dev-jenkins-worker-sc
+          pv: dev-jenkins-worker-pv
+          pvc: dev-jenkins-worker-pvc
 
-cluster_prod_cloud:
-  subnet: 10.12.0.0/16
+- name: dev-cloud-cluster:
+  subnet: 10.8.0.0/16
+  nodes:
+    - name: devc-node-master
+      type: node
+      subnet: 10.8.0.0/19
+      pods:
+        - name: devc-jenkins-master
+          namespace: devc-jenkins-master
+          subnet: 10.8.6.0/23
+          sc: devc-jenkins-master-sc
+          pv: devc-jenkins-master-pv
+          pvc: devc-jenkins-master-pvc
+    - name: devc-node-worker
+      subnet: 10.8.32.0/19
+      pods:
+        - name: devc-jenkins-worker
+          namespace: devc-jenkins-worker
+          subnet: 10.8.38.0/23
+          sc: devc-jenkins-worker-sc
+          pv: devc-jenkins-worker-pv
+          pvc: devc-jenkins-worker-pvc
 
-cluster_dev_cloud:
-  subnet: 10.13.0.0/16
+- name: prod-cluster:
+  subnet: 10.12.0.0/14
+  nodes:
+    - name: prod-node-master
+      type: node
+      subnet: 10.12.0.0/19
+      pods:
+        - name: prod-jenkins-master
+          namespace: prod-jenkins-master
+          subnet: 10.8.6.0/23
+          sc: prod-jenkins-master-sc
+          pv: prod-jenkins-master-pv
+          pvc: prod-jenkins-master-pvc
+    - name: prod-node-worker
+      subnet: 10.8.32.0/19
+      pods:
+        - name: prod-jenkins-worker
+          namespace: prod-jenkins-worker
+          subnet: 10.8.38.0/23
+          sc: prod-jenkins-worker-sc
+          pv: prod-jenkins-worker-pv
+          pvc: prod-jenkins-worker-pvc
 
-cluster_stg:
-  subnet: 10.14.0.0/16
+- name: prod-cloud-cluster:
+  subnet: 10.16.0.0/14
+  nodes:
+    - name: prodc-node-master
+      type: node
+      subnet: 10.16.0.0/19
+      pods:
+        - name: prodc-jenkins-master
+          namespace: prodc-jenkins-master
+          subnet: 10.16.6.0/23
+          sc: prodc-jenkins-master-sc
+          pv: prodc-jenkins-master-pv
+          pvc: prodc-jenkins-master-pvc
+    - name: prodc-node-worker
+      subnet: 10.16.32.0/19
+      pods:
+        - name: prodc-jenkins-worker
+          namespace: prodc-jenkins-worker
+          subnet: 10.16.38.0/23
+          sc: prodc-jenkins-worker-sc
+          pv: prodc-jenkins-worker-pv
+          pvc: prodc-jenkins-worker-pvc
 
+- name: stg-cluster:
+  subnet: 10.20.0.0/16
+  nodes:
+    - name: stg-node-master
+      type: node
+      subnet: 10.20.0.0/19
+      pods:
+        - name: devc-jenkins-master
+          namespace: devc-jenkins-master
+          subnet: 10.20.6.0/23
+          sc: devc-jenkins-master-sc
+          pv: devc-jenkins-master-pv
+          pvc: devc-jenkins-master-pvc
+    - name: devc-node-worker
+      subnet: 10.20.32.0/19
+      pods:
+        - name: devc-jenkins-worker
+          namespace: devc-jenkins-worker
+          subnet: 10.20.38.0/23
+          sc: devc-jenkins-worker-sc
+          pv: devc-jenkins-worker-pv
+          pvc: devc-jenkins-worker-pvc
 
 ```
 
