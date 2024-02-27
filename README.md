@@ -8,38 +8,28 @@
   nodes:
     - name: sink-node-master-1
       type: node
-      subnet: 10.10.1.0/16
+      subnet: 10.10.0.0/19
       pods:
-        - name: s-jenkins-master
+        - name: s-jenkins-master-1-uid
+          namespace: s-jenkins-master-1-uid
+          subnet: 10.10.2.0/23
+          sc: s-jenkins-master-sc-1-uid
+          pv: s-jenkins-master-pv-1-uid
+          pvc: s-jenkins-master-pvc-1-uid
+        - name: s-kube-proxy-1
           type: pod
-          namespace: s-jenkins-master-1
-          subnet_from: 10.10.1.12/16
-          subnet_to: 10.10.1.19/16
-          persistent_volume:
-            -  name: s-jenkins-master-1-pv
-               subnet_from: 10.10.1.10/16
-               subnet_to: 10.10.1.11/16
-        - name: s-pod-master-1
-          type: pod
-          namespace: s-node-pod-master
-          subnet_from: 10.10.1.22/16
-          subnet_to: 10.10.1.49/16
-          persistent_volume:
-            -  name: sink-master-1-pv
-               subnet_from: 10.10.1.20/16
-               subnet_to: 10.10.1.21/16
+          namespace: kube-system
+          subnet: 10.10.4.0/23
         - namespace: s-prod-pod-worker
           type: pod
-          subnet_from: 10.10.1.52/16
-          subnet_to: 10.10.1.79/16
+          subnet: 10.10.6.0/23
           persistent_volume:
             -  name: s-prod-pod-workers-1-pv
                subnet_from: 10.10.1.50/16
                subnet_to: 10.10.1.51/16
         - namespace: s-prodc-pod-worker
           type: pod
-          subnet_from: 10.10.1.82/16
-          subnet_to: 10.10.1.109/16
+          subnet: 10.10.8.0/23
           persistent_volume:
             -  name: s-prod-pod-workers-1-pv
                subnet_from: 10.10.1.80/16
