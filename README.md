@@ -9,15 +9,25 @@
     - name: sink-node-master-1
       subnet: 10.10.1.0/16
       pods:
-        - namespace: s-node-master-1
-          subnet_from: 10.10.1.0/16
-          subnet_to: 10.10.1.19/16
-        - namespace: s-prod-pod-workers
-          subnet_from: 10.10.1.20/16
-          subnet_to: 10.10.1.39/16
-        - namespace: s-prodc-pod-workers
-          subnet_from: 10.10.1.40/16
-          subnet_to: 10.10.1.59/16
+        - name: s-node-pod-master-1
+          namespace: s-node-pod-master
+          subnet_from: 10.10.1.21/16
+          subnet_to: 10.10.1.49/16
+          persistent_volume:
+            -  name: s-node-pod-master-1-pv
+               ip: 10.10.1.20/16
+        - namespace: s-prod-pod-workers-1
+          subnet_from: 10.10.1.51/16
+          subnet_to: 10.10.1.79/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               ip: 10.10.1.50/16
+        - namespace: s-prodc-pod-workers-1
+          subnet_from: 10.10.1.81/16
+          subnet_to: 10.10.1.109/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               ip: 10.10.1.80/16
     - name: sink-node-master-2
       subnet: 10.10.2.0/16
       pods:
