@@ -7,41 +7,41 @@
   subnet: 10.10.0.0/16
   nodes:
     - name: sink-node-master-1
-      subnet: 10.100.0.0/16
+      subnet: 10.10.1.0/16
       pods:
         - namespace: s-node-master-1
-          subnet_from: 10.100.1.0/16
-          subnet_to: 10.100.10.255/16
+          subnet_from: 10.10.1.0/16
+          subnet_to: 10.10.1.19/16
         - namespace: s-prod-pod-workers
-          subnet_from: 10.100.11.0/16
-          subnet_to: 10.100.20.255/16
+          subnet_from: 10.10.1.20/16
+          subnet_to: 10.10.1.39/16
         - namespace: s-prodc-pod-workers
-          subnet_from: 10.100.21.0/16
-          subnet_to: 10.100.30.255/16
+          subnet_from: 10.10.1.40/16
+          subnet_to: 10.10.1.59/16
     - name: sink-node-master-2
-      subnet: 10.101.0.0/16
+      subnet: 10.10.2.0/16
       pods:
         - namespace: s-node-master-2
-          subnet_from: 10.101.1.0/16
-          subnet_to: 10.101.10.255/16
+          subnet_from: 10.10.2.0/16
+          subnet_to: 10.10.2.19/16
         - namespace: s-stg-pod-worker-1
-          subnet_from: 10.101.11.0/16
-          subnet_to: 10.101.20.255/16
+          subnet_from: 10.10.2.20/16
+          subnet_to: 10.10.2.39/16
         - namespace: s-ext-pod-worker-1
-          subnet_from: 10.101.21.0/16
-          subnet_to: 10.101.30.255/16
+          subnet_from: 10.10.2.40/16
+          subnet_to: 10.10.2.59/16
     - name: sink-node-master-3
-      subnet: 10.102.0.0/16
+      subnet: 10.10.3.0/16
       pods:
         - namespace: s-node-master-3
-          subnet_from: 10.102.1.0/16
-          subnet_to: 10.102.10.255/16
+          subnet_from: 10.10.3.0/16
+          subnet_to: 10.10.3.19/16
         - namespace: s-dev-pod-worker-1
-          subnet_from: 10.102.11.0/16
-          subnet_to: 10.102.20.255/16
+          subnet_from: 10.10.3.20/16
+          subnet_to: 10.10.3.39/16
         - namespace: s-devc-pod-worker-1
-          subnet_from: 10.102.21.0/16
-          subnet_to: 10.102.30.255/16
+          subnet_from: 10.10.3.40/16
+          subnet_to: 10.10.3.59/16
 cluster_dev:
   subnet: 10.11.0.0/16
 
