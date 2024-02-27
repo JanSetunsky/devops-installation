@@ -10,102 +10,90 @@
       type: node
       subnet: 10.10.0.0/19
       pods:
-        - name: s-jenkins-master-1-uid
-          namespace: s-jenkins-master-1-uid
-          subnet: 10.10.2.0/23
-          sc: s-jenkins-master-sc-1-uid
-          pv: s-jenkins-master-pv-1-uid
-          pvc: s-jenkins-master-pvc-1-uid
-        - name: s-kube-proxy-1
-          namespace: kube-system
-          subnet: 10.10.4.0/23
-          sc: s-jenkins-master-sc-1-uid
-          pv: s-jenkins-master-pv-1-uid
-          pvc: s-jenkins-master-pvc-1-uid
-        - namespace: s-prod-pod-worker
+        - name: s-jenkins-master
+          namespace: s-jenkins-master
           subnet: 10.10.6.0/23
-          sc: s-jenkins-master-sc-1-uid
-          pv: s-jenkins-master-pv-1-uid
-          pvc: s-jenkins-master-pvc-1-uid
-        - namespace: s-prodc-pod-worker
-          subnet: 10.10.8.0/23
-          sc: s-jenkins-master-sc-1-uid
-          pv: s-jenkins-master-pv-1-uid
-          pvc: s-jenkins-master-pvc-1-uid
+          sc: s-jenkins-master-sc
+          pv: s-jenkins-master-pv
+          pvc: s-jenkins-master-pvc
+        - name: s-prod-pod-worker
+          namespace: s-prod-pod-worker
+          subnet: 10.10.8.0/21
+          sc: s-prod-load-balancer-sc
+          pv: s-prod-load-balancer-pv
+          pvc: s-prod-load-balancer-pvc
+          containers:
+            - name: s-prod-load-balancer-1
+            - name: s-prod-load-balancer-2
+            - name: s-prod-load-balancer-3
+        - name: s-prodc-pod-worker
+          namespace: s-prodc-pod-worker
+          subnet: 10.10.16.0/21
+          sc: s-prodc-load-balancer-sc
+          pv: s-prodc-load-balancer-pv
+          pvc: s-prodc-load-balancer-pvc
+          containers:
+            - name: s-prodc-load-balancer-1
+            - name: s-prodc-load-balancer-2
+            - name: s-prodc-load-balancer-3
     - name: sink-node-master-2
-      subnet: 10.10.2.0/16
+      subnet: 10.10.32.0/19
       pods:
         - name: s-jenkins-master
-          type: pod
-          namespace: s-jenkins-master-1
-          subnet_from: 10.10.2.12/16
-          subnet_to: 10.10.2.19/16
-          persistent_volume:
-            -  name: s-jenkins-master-1-pv
-               subnet_from: 10.10.2.10/16
-               subnet_to: 10.10.2.11/16
-        - name: s-pod-master-1
-          type: pod
-          namespace: s-node-pod-master
-          subnet_from: 10.10.2.22/16
-          subnet_to: 10.10.2.49/16
-          persistent_volume:
-            -  name: sink-master-1-pv
-               subnet_from: 10.10.2.20/16
-               subnet_to: 10.10.2.21/16
-        - namespace: s-prod-pod-worker
-          type: pod
-          subnet_from: 10.10.2.52/16
-          subnet_to: 10.10.2.79/16
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.2.50/16
-               subnet_to: 10.10.2.51/16
-        - namespace: s-prodc-pod-worker
-          type: pod
-          subnet_from: 10.10.2.82/16
-          subnet_to: 10.10.2.109/16
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.2.80/16
-               subnet_to: 10.10.2.81/16
+          namespace: s-jenkins-master
+          subnet: 10.10.6.0/23
+          sc: s-jenkins-master-sc
+          pv: s-jenkins-master-pv
+          pvc: s-jenkins-master-pvc
+        - name: s-stg-pod-worker
+          namespace: s-stg-pod-worker
+          subnet: 10.10.8.0/21
+          sc: s-stg-load-balancer-sc
+          pv: s-stg-load-balancer-pv
+          pvc: s-stg-load-balancer-pvc
+          containers:
+            - name: s-stg-load-balancer-1
+            - name: s-stg-load-balancer-2
+            - name: s-stg-load-balancer-3
+        - name: s-ext-pod-worker
+          namespace: s-ext-pod-worker
+          subnet: 10.10.16.0/21
+          sc: s-ext-load-balancer-sc
+          pv: s-ext-load-balancer-pv
+          pvc: s-ext-load-balancer-pvc
+          containers:
+            - name: s-ext-load-balancer-1
+            - name: s-ext-load-balancer-2
+            - name: s-ext-load-balancer-3
     - name: sink-node-master-3
       subnet: 10.10.3.0/16
       pods:
         - name: s-jenkins-master
-          type: pod
-          namespace: s-jenkins-master-1
-          subnet_from: 10.10.3.12/16
-          subnet_to: 10.10.3.19/16
-          persistent_volume:
-            -  name: s-jenkins-master-1-pv
-               subnet_from: 10.10.3.10/16
-               subnet_to: 10.10.3.11/16
-        - name: s-pod-master-1
-          type: pod
-          namespace: s-node-pod-master
-          subnet_from: 10.10.3.22/16
-          subnet_to: 10.10.3.49/16
-          persistent_volume:
-            -  name: sink-master-1-pv
-               subnet_from: 10.10.3.20/16
-               subnet_to: 10.10.3.21/16
-        - namespace: s-prod-pod-worker
-          type: pod
-          subnet_from: 10.10.3.52/16
-          subnet_to: 10.10.3.79/16
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.3.50/16
-               subnet_to: 10.10.3.51/16
-        - namespace: s-prodc-pod-worker
-          type: pod
-          subnet_from: 10.10.3.82/16
-          subnet_to: 10.10.3.109/16
-          persistent_volume:
-            -  name: s-prod-pod-workers-1-pv
-               subnet_from: 10.10.3.80/16
-               subnet_to: 10.10.3.81/16
+          namespace: s-jenkins-master
+          subnet: 10.10.6.0/23
+          sc: s-jenkins-master-sc
+          pv: s-jenkins-master-pv
+          pvc: s-jenkins-master-pvc
+        - name: s-dev-pod-worker
+          namespace: s-dev-pod-worker
+          subnet: 10.10.8.0/21
+          sc: s-dev-load-balancer-sc
+          pv: s-dev-load-balancer-pv
+          pvc: s-dev-load-balancer-pvc
+          containers:
+            - name: s-dev-load-balancer-1
+            - name: s-dev-load-balancer-2
+            - name: s-dev-load-balancer-3
+        - name: s-devc-pod-worker
+          namespace: s-devc-pod-worker
+          subnet: 10.10.16.0/21
+          sc: s-devc-load-balancer-sc
+          pv: s-devc-load-balancer-pv
+          pvc: s-devc-load-balancer-pvc
+          containers:
+            - name: s-devc-load-balancer-1
+            - name: s-devc-load-balancer-2
+            - name: s-devc-load-balancer-3
 cluster_dev:
   subnet: 10.11.0.0/16
 
