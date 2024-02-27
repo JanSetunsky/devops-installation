@@ -19,52 +19,105 @@
             -  name: s-jenkins-master-1-pv
                subnet_from: 10.10.1.10/16
                subnet_to: 10.10.1.11/16
-        - name: s-node-pod-master-1
+        - name: s-pod-master-1
           type: pod
           namespace: s-node-pod-master
-          subnet_from: 10.10.1.21/16
+          subnet_from: 10.10.1.22/16
           subnet_to: 10.10.1.49/16
           persistent_volume:
-            -  name: s-node-pod-master-1-pv
-               ip: 10.10.1.20/16
-        - namespace: s-prod-pod-workers-1
+            -  name: sink-master-1-pv
+               subnet_from: 10.10.1.20/16
+               subnet_to: 10.10.1.21/16
+        - namespace: s-prod-pod-worker
           type: pod
-          subnet_from: 10.10.1.51/16
+          subnet_from: 10.10.1.52/16
           subnet_to: 10.10.1.79/16
           persistent_volume:
             -  name: s-prod-pod-workers-1-pv
-               ip: 10.10.1.50/16
-        - namespace: s-prodc-pod-workers-1
+               subnet_from: 10.10.1.50/16
+               subnet_to: 10.10.1.51/16
+        - namespace: s-prodc-pod-worker
           type: pod
-          subnet_from: 10.10.1.81/16
+          subnet_from: 10.10.1.82/16
           subnet_to: 10.10.1.109/16
           persistent_volume:
             -  name: s-prod-pod-workers-1-pv
-               ip: 10.10.1.80/16
+               subnet_from: 10.10.1.80/16
+               subnet_to: 10.10.1.81/16
     - name: sink-node-master-2
       subnet: 10.10.2.0/16
       pods:
-        - namespace: s-node-master-2
-          subnet_from: 10.10.2.0/16
+        - name: s-jenkins-master
+          type: pod
+          namespace: s-jenkins-master-1
+          subnet_from: 10.10.2.12/16
           subnet_to: 10.10.2.19/16
-        - namespace: s-stg-pod-worker-1
-          subnet_from: 10.10.2.20/16
-          subnet_to: 10.10.2.39/16
-        - namespace: s-ext-pod-worker-1
-          subnet_from: 10.10.2.40/16
-          subnet_to: 10.10.2.59/16
+          persistent_volume:
+            -  name: s-jenkins-master-1-pv
+               subnet_from: 10.10.2.10/16
+               subnet_to: 10.10.2.11/16
+        - name: s-pod-master-1
+          type: pod
+          namespace: s-node-pod-master
+          subnet_from: 10.10.2.22/16
+          subnet_to: 10.10.2.49/16
+          persistent_volume:
+            -  name: sink-master-1-pv
+               subnet_from: 10.10.2.20/16
+               subnet_to: 10.10.2.21/16
+        - namespace: s-prod-pod-worker
+          type: pod
+          subnet_from: 10.10.2.52/16
+          subnet_to: 10.10.2.79/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               subnet_from: 10.10.2.50/16
+               subnet_to: 10.10.2.51/16
+        - namespace: s-prodc-pod-worker
+          type: pod
+          subnet_from: 10.10.2.82/16
+          subnet_to: 10.10.2.109/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               subnet_from: 10.10.2.80/16
+               subnet_to: 10.10.2.81/16
     - name: sink-node-master-3
       subnet: 10.10.3.0/16
       pods:
-        - namespace: s-node-master-3
-          subnet_from: 10.10.3.0/16
+        - name: s-jenkins-master
+          type: pod
+          namespace: s-jenkins-master-1
+          subnet_from: 10.10.3.12/16
           subnet_to: 10.10.3.19/16
-        - namespace: s-dev-pod-worker-1
-          subnet_from: 10.10.3.20/16
-          subnet_to: 10.10.3.39/16
-        - namespace: s-devc-pod-worker-1
-          subnet_from: 10.10.3.40/16
-          subnet_to: 10.10.3.59/16
+          persistent_volume:
+            -  name: s-jenkins-master-1-pv
+               subnet_from: 10.10.3.10/16
+               subnet_to: 10.10.3.11/16
+        - name: s-pod-master-1
+          type: pod
+          namespace: s-node-pod-master
+          subnet_from: 10.10.3.22/16
+          subnet_to: 10.10.3.49/16
+          persistent_volume:
+            -  name: sink-master-1-pv
+               subnet_from: 10.10.3.20/16
+               subnet_to: 10.10.3.21/16
+        - namespace: s-prod-pod-worker
+          type: pod
+          subnet_from: 10.10.3.52/16
+          subnet_to: 10.10.3.79/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               subnet_from: 10.10.3.50/16
+               subnet_to: 10.10.3.51/16
+        - namespace: s-prodc-pod-worker
+          type: pod
+          subnet_from: 10.10.3.82/16
+          subnet_to: 10.10.3.109/16
+          persistent_volume:
+            -  name: s-prod-pod-workers-1-pv
+               subnet_from: 10.10.3.80/16
+               subnet_to: 10.10.3.81/16
 cluster_dev:
   subnet: 10.11.0.0/16
 
