@@ -1,5 +1,9 @@
 # devops-installation
 
+## Cluster Sink integration
+
+![cluster-sink](ClusterSink.drawio.png)
+
 ## Load Balancing definition for Cluster Mesh IP range
 
 ```yaml
