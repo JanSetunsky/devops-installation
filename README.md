@@ -11,7 +11,6 @@
   subnet: 10.0.0.0/14
   nodes:
     - name: sink-node-master-1
-      type: node
       subnet: 10.0.0.0/19
       pods:
         - name: s-jenkins-master
@@ -102,7 +101,6 @@
   subnet: 10.4.0.0/14
   nodes:
     - name: dev-node-master
-      type: node
       subnet: 10.4.0.0/19
       pods:
         - name: dev-jenkins-master
@@ -125,7 +123,6 @@
   subnet: 10.8.0.0/16
   nodes:
     - name: devc-node-master
-      type: node
       subnet: 10.8.0.0/19
       pods:
         - name: devc-jenkins-master
@@ -148,7 +145,6 @@
   subnet: 10.12.0.0/14
   nodes:
     - name: prod-node-master
-      type: node
       subnet: 10.12.0.0/19
       pods:
         - name: prod-jenkins-master
@@ -171,7 +167,6 @@
   subnet: 10.16.0.0/14
   nodes:
     - name: prodc-node-master
-      type: node
       subnet: 10.16.0.0/19
       pods:
         - name: prodc-jenkins-master
@@ -194,7 +189,6 @@
   subnet: 10.20.0.0/16
   nodes:
     - name: stg-node-master
-      type: node
       subnet: 10.20.0.0/19
       pods:
         - name: devc-jenkins-master
