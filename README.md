@@ -5,7 +5,7 @@
 ![cluster-sink](ClusterSink.drawio.png)
 
 ## Cluster Mesh IP range
-![cluster_mesh_cidrs.yaml](cluster_mesh_cidrs.yaml
+![cluster_mesh_cidrs.yaml](cluster_mesh_cidrs.yaml)
 
 ## Pipeline workflow
 ![pipeline-workflow](PipelineWorkflow.drawio.png)
